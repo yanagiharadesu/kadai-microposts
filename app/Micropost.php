@@ -15,4 +15,14 @@ class Micropost extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function gain_favor()
+    {
+        return $this->belongsToMany(User::class, 'favorite', 'user_id', 'micropost_id')->withTimestamps();
+    }
+    
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount(['gain_favor']);
+    }
 }

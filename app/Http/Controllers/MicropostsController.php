@@ -54,4 +54,16 @@ class MicropostsController extends Controller
         //  前のURLへリダイレクトさせる
         return back();
     }
+    
+    public function gainFavor($id)
+    {
+        $micropost = Micropost::findOrFail($id);
+        $micropost->loadRelationshipCounts();
+        $favorers = $micropost->gain_favor()->paginate(10);
+        
+        return view('microposts.gain_favor', [
+            'micropost' => $micropost, 
+            'users' => $favorers, 
+        ]);
+    }
 }
