@@ -55,6 +55,7 @@ class MicropostsController extends Controller
         return back();
     }
     
+    /*
     public function gainFavor($id)
     {
         $micropost = Micropost::findOrFail($id);
@@ -66,4 +67,5 @@ class MicropostsController extends Controller
             'users' => $favorers, 
         ]);
     }
+    */
 }
